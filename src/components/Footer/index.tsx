@@ -8,19 +8,11 @@ import { Modal } from "antd";
 import i18n from "i18next";
 import {
   FooterSection,
-  Title,
   NavLink,
   Extra,
   LogoContainer,
-  Para,
   Large,
-  Chat,
-  Empty,
   FooterContainer,
-  Language,
-  Label,
-  LanguageSwitch,
-  LanguageSwitchContainer,
 } from "./styles";
 
 interface SocialLinkProps {
@@ -42,10 +34,6 @@ const Footer = ({ t }: { t: TFunction }) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   }
-
-  const handleChange = (language: string) => {
-    i18n.changeLanguage(language);
-  };
 
   const SocialLink = ({ href, src }: SocialLinkProps) => {
     return (

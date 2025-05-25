@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { notification } from "antd";
 import { handleSubmit as firebaseSubmit } from "../../backend/submitForm";
+import { useHistory } from "react-router-dom";
 
 interface IValues {
   name: string;
@@ -15,6 +16,7 @@ const initialValues: IValues = {
 };
 
 export const useForm = (validate: { (values: IValues): IValues }) => {
+  const history = useHistory();
   const [formState, setFormState] = useState<{
     values: IValues;
     errors: IValues;
@@ -42,6 +44,17 @@ export const useForm = (validate: { (values: IValues): IValues }) => {
           message: "Success",
           description: "Your message has been sent!",
         });
+        
+        // Update URL for conversion tracking
+        history.push("/thank-you-for-submission");
+        
+        // Send conversion event to Google Analytics if available
+        if (window.gtag) {
+          window.gtag('event', 'conversion', {
+            'send_to': 'AW-16913080207',
+            'transaction_id': new Date().getTime().toString()
+          });
+        }
       }
     } catch (error) {
       notification["error"]({

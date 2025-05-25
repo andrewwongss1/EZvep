@@ -7,7 +7,6 @@ import validate from "../../common/utils/validationRules";
 import { Button } from "../../common/Button";
 import Block from "../Block";
 import Input from "../../common/Input";
-import TextArea from "../../common/TextArea";
 import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
 //import { handleSubmit as firebaseSubmit } from "../../backend/submitForm";
 
